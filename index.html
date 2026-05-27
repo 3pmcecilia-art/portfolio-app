@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=1280, initial-scale=1">
+<title>영어 콘텐츠 전문가 포트폴리오</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{overflow-x:auto}
+body{min-width:1280px;font-family:-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:#1a1a2e;background:#fff;line-height:1.6}
+:root{--coral:#E8614A;--dark:#1a1a2e;--mid:#555;--muted:#999;--light:#F8F7F5;--border:#EBEBEB}
+
+.nav-wrapper{border-bottom:0.5px solid var(--border);background:#fff}
+.nav-inner{width:1280px;margin:0 auto;display:grid;grid-template-columns:320px 640px 320px;padding:1.1rem 0}
+.nav-content{grid-column:2;display:flex;justify-content:space-between;align-items:center;gap:2rem}
+.logo{font-size:1.1rem;font-weight:800;color:var(--dark);white-space:nowrap}
+.logo span{color:var(--coral)}
+.nav-links{display:flex;gap:1.5rem}
+.nav-links a{text-decoration:none;color:var(--mid);font-size:.875rem}
+.nav-links a:hover{color:var(--coral)}
+
+.admin-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:.5rem}
+.admin-toggle{width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.15);border:none;cursor:pointer;font-size:1rem}
+.admin-toggle:hover{background:rgba(0,0,0,.35)}
+.admin-panel{display:none;flex-direction:column;gap:.5rem;align-items:flex-end}
+.admin-float:hover .admin-panel{display:flex}
+.admin-panel button{padding:.5rem 1rem;border-radius:50px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap}
+.nav-edit{background:transparent;color:var(--mid);border:1px solid var(--border);padding:.5rem 1.1rem;border-radius:50px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit}
+.nav-edit.on{background:#FFF0ED;color:var(--coral);border-color:#F5D5CE}
+.nav-dl{background:var(--coral);color:#fff;border:none;padding:.5rem 1.2rem;border-radius:50px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit}
+[contenteditable="true"]{outline:2px dashed #F5D5CE;border-radius:4px;padding:2px 4px;cursor:text}
+[contenteditable="true"]:focus{outline:2px solid var(--coral);background:#FFF9F8}
+
+.hero{background: #FDD1CE;
+  height: 520px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;}
+.hero-l{width: 500px;
+  flex: none;
+  padding: 4.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.2rem;}
+.hero-r{width: 460px;
+  flex: none;
+  background: #FDD1CE;
+  position: relative;
+  overflow: hidden;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:700;color:var(--coral);letter-spacing:1.5px;text-transform:uppercase}
+.hero-tag::before{content:'';width:22px;height:2px;background:var(--coral)}
+.hero-name{font-size:3.4rem;font-weight:900;line-height:1.1;letter-spacing:-1px}
+.hero-name em{color:var(--coral);font-style:normal}
+.hero-desc{font-size:.9rem;color:var(--muted);line-height:1.9}
+.hero-btns{display:flex;gap:.75rem;margin-top:.3rem}
+.btn-fill{background:#1a1a2e;color:#fff;border:none;padding:.7rem 1.6rem;border-radius:50px;font-size:.875rem;font-weight:700;cursor:pointer;font-family:inherit}
+.btn-line{background:transparent;color:#1a1a2e;border:1.5px solid #1a1a2e;padding:.7rem 1.6rem;border-radius:50px;font-size:.875rem;font-weight:600;cursor:pointer;font-family:inherit}
+
+.stats{background:var(--dark);padding:0}
+.stats-grid{display:flex;width:640px;margin:0 auto}
+.stat{flex:none;width:213px;text-align:center;padding:2.5rem 1rem;border-right:0.5px solid rgba(255,255,255,.1)}
+.stat:last-child{border-right:none}
+.stat-n{font-size:2.5rem;font-weight:900;color:var(--coral);letter-spacing:-1px;line-height:1}
+.stat-n sup{font-size:1.2rem}
+.stat-l{font-size:.8rem;color:rgba(255,255,255,.55);margin-top:.35rem}
+
+.sec{padding:4.5rem 0}
+.sec-bg{background:var(--light)}
+.sec-inner{width:1280px;margin:0 auto;display:grid;grid-template-columns:320px 640px 320px}
+.sec-inner > *{grid-column:2}
+.sh{text-align:center;margin-bottom:2.75rem}
+.sec-tag{font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--coral);margin-bottom:.4rem}
+.sec-title{font-size:2rem;font-weight:800;letter-spacing:-.5px}
+.sec-title em{color:var(--coral);font-style:normal}
+
+.cards{display:flex;gap:1.25rem}
+.card{flex:none;width:197px;background:#fff;border:0.5px solid var(--border);border-radius:14px;padding:1.75rem 1.4rem;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--coral);transform:translateY(-4px)}
+.card-ico{width:44px;height:44px;border-radius:10px;background:#FFF0ED;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:.9rem}
+.card h3{font-size:.95rem;font-weight:700;margin-bottom:.4rem}
+.card p{font-size:.82rem;color:var(--muted);line-height:1.75}
+
+.ftabs{display:flex;gap:.6rem;justify-content:center;margin-bottom:2.25rem}
+.ftab{padding:.4rem 1.1rem;border-radius:50px;border:0.5px solid var(--border);background:#fff;font-size:.82rem;cursor:pointer;color:var(--mid);font-family:inherit;transition:all .2s}
+.ftab.on,.ftab:hover{background:var(--coral);border-color:var(--coral);color:#fff}
+
+.pgrid{display:flex;flex-wrap:wrap;gap:1.25rem}
+.pcard{flex:none;width:197px;background:#fff;border-radius:14px;overflow:hidden;border:0.5px solid var(--border);transition:transform .2s}
+.pcard:hover{transform:translateY(-4px)}
+.pthumb{height:165px;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#C4897A;overflow:hidden}
+.pthumb img{width:100%;height:100%;object-fit:cover}
+.t1{background:#FAF0EE}.t2{background:#F5EEF0}.t3{background:#EEF3F0}
+.t4{background:#F5F0E8}.t5{background:#EEF0F5}.t6{background:#F0F5F2}
+.pinfo{padding:1.1rem 1.2rem}
+.pcat{font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--coral);margin-bottom:.3rem}
+.ptitle{font-size:.92rem;font-weight:700;margin-bottom:.3rem}
+.pmeta{font-size:.78rem;color:var(--muted)}
+.ptags{display:flex;gap:.35rem;margin-top:.65rem;flex-wrap:wrap}
+.ptag{font-size:.68rem;padding:.18rem .55rem;border-radius:50px;background:var(--light);color:var(--mid)}
+
+.cert-grid{display:flex;justify-content:center;gap:3rem}
+.cert-card{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.6rem;width:130px;transition:transform .2s}
+.cert-card:hover{transform:translateY(-5px)}
+.cert-badge{width:56px;height:56px;display:flex;align-items:center;justify-content:center}
+.cert-name{font-size:.82rem;font-weight:700;color:var(--dark);line-height:1.45}
+.cert-issuer{font-size:.72rem;color:var(--muted);line-height:1.4}
+.cert-date{font-size:.7rem;font-weight:600;color:var(--coral);background:#FFF0ED;padding:.12rem .6rem;border-radius:50px}
+
+.contact{background:var(--dark);padding:4rem 0;text-align:center}
+.contact h2{font-size:1.9rem;font-weight:800;color:#fff;margin-bottom:.6rem}
+.contact p{color:rgba(255,255,255,.45);font-size:.9rem;margin-bottom:1.75rem}
+.cbtns{display:flex;gap:.75rem;justify-content:center}
+.btn-w{background:#fff;color:var(--dark);border:none;padding:.8rem 1.75rem;border-radius:50px;font-size:.875rem;font-weight:700;cursor:pointer;font-family:inherit}
+.btn-ow{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3);padding:.8rem 1.75rem;border-radius:50px;font-size:.875rem;font-weight:600;cursor:pointer;font-family:inherit}
+footer{background:#11111f;text-align:center;padding:1.25rem;font-size:.75rem;color:rgba(255,255,255,.25)}
+</style>
+</head><body>
+
+<div class="nav-wrapper">
+  <div class="nav-inner">
+    <div class="nav-content">
+      <div class="logo">English Content<span> Specialist</span></div>
+      <div class="nav-links">
+        <a href="#">소개</a><a href="#">역량</a><a href="#">프로젝트</a><a href="#">자격증</a><a href="#">연락처</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="admin-float">
+  <div class="admin-panel">
+    <button id="editBtn2" style="background:#fff;border:1px solid #ddd;color:#555;padding:.5rem 1rem;border-radius:50px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit">✏️ 편집 모드</button>
+    <button id="downloadBtn2" style="background:#E8614A;color:#fff;border:none;padding:.5rem 1rem;border-radius:50px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit">⬇ HTML 저장</button>
+  </div>
+  <button class="admin-toggle">⚙️</button>
+</div>
+
+<section class="hero">
+  <div class="hero-l">
+    <div class="hero-tag">영어 콘텐츠 전문가 · 교육 콘텐츠 기획자</div>
+    <h1 class="hero-name">학습자 중심<br>영어 교육을<br>설계하는 <br><em>전문가</em></h1>
+    <p class="hero-desc">교과서 개발부터 디지털 온라인 콘텐츠까지, 현장 경험을 바탕으로 실질적인 학습 경험을 만드는 영어 교육 콘텐츠 전문가입니다.</p>
+    <div class="hero-btns">
+      <button class="btn-fill" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">프로젝트 보기</button>
+      <button class="btn-line" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">연락하기</button>
+    </div>
+  </div>
+  <div class="hero-r" id="heroR">
+    <img src="images/main.png" style="width:90%;height:90%;object-fit:contain;object-position:center bottom;">  </div>
+</section>
+
+<div class="stats"><div class="stats-grid">
+  <div class="stat"><div class="stat-n">10<sup>년+</sup></div><div class="stat-l">교육 콘텐츠 경력</div></div>
+  <div class="stat"><div class="stat-n">2<sup>종</sup></div><div class="stat-l">교과서 개발 참여</div></div>
+  <div class="stat"><div class="stat-n">4<sup>년</sup></div><div class="stat-l">교수 경력</div></div>
+</div></div>
+
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sh"><div class="sec-tag">Core Competencies</div><h2 class="sec-title">3가지 <em>핵심 역량</em></h2></div>
+    <div class="cards">
+      <div class="card"><div class="card-ico">💡</div><h3>창의 역량</h3><p>새로운 학습 경험을 설계하는 콘텐츠 기획력</p></div>
+      <div class="card"><div class="card-ico">🖥️</div><h3>디지털 역량</h3><p>AI 주도 환경에 맞춘 온라인 콘텐츠 구현력</p></div>
+      <div class="card"><div class="card-ico">🗣️</div><h3>소통 역량</h3><p>학습자 니즈를 정확히 읽는 현장 기반 소통력</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-bg" id="projects">
+  <div class="sec-inner">
+    <div class="sh"><div class="sec-tag">Portfolio</div><h2 class="sec-title">주요 <em>프로젝트</em></h2></div>
+    <div class="ftabs">
+      <button class="ftab on">전체</button>
+      <button class="ftab">교과서 개발</button>
+      <button class="ftab">디지털 콘텐츠</button>
+      <button class="ftab">현장 교육</button>
+    </div>
+    <div class="pgrid">
+      <div class="pcard"><div class="pthumb t1"><img src="images/thumb1.jpg"></div><div class="pinfo"><div class="pcat">교과서 개발</div><div class="ptitle">고등 수프림 듣기 참고서 개편</div><div class="pmeta">동아출판 · 2025.04 ~ 2025.08</div><div class="ptags"><span class="ptag">참고서</span><span class="ptag">듣기</span><span class="ptag">고등영어</span></div></div></div>
+      <div class="pcard"><div class="pthumb t2"><img src="images/thumb2.jpg"></div><div class="pinfo"><div class="pcat">교과서 개발</div><div class="ptitle">공통영어 교과서 개발</div><div class="pmeta">동아출판 · 2022.07 ~ 2023.12</div><div class="ptags"><span class="ptag">교과서</span><span class="ptag">공통영어</span><span class="ptag">편집</span></div></div></div>
+      <div class="pcard"><div class="pthumb t3"><img src="images/thumb3.png"></div><div class="pinfo"><div class="pcat">디지털 콘텐츠</div><div class="ptitle">초등·성인 전화화상영어 웹교재 개발</div><div class="pmeta">YBM교육 · 2021.01 ~ 2021.02</div><div class="ptags"><span class="ptag">웹교재</span><span class="ptag">화상영어</span><span class="ptag">초등·성인</span></div></div></div>
+      <div class="pcard"><div class="pthumb t4"><img src="images/thumb4.jpg"></div><div class="pinfo"><div class="pcat">교과서 개발</div><div class="ptitle">고등 심화 영어Ⅰ 교과서 개발</div><div class="pmeta">천재교과서 · 2016.03 ~ 2016.12</div><div class="ptags"><span class="ptag">교과서</span><span class="ptag">심화영어</span><span class="ptag">편집</span></div></div></div>
+      <div class="pcard"><div class="pthumb t5"><img src="images/thumb5.png" style="object-fit:contain;""></div><div class="pinfo"><div class="pcat">디지털 콘텐츠</div><div class="ptitle">밀크T중고등 온라인 콘텐츠 개발</div><div class="pmeta">천재교과서 · 2018.01 ~ 2020.08</div><div class="ptags"><span class="ptag">온라인</span><span class="ptag">밀크T</span><span class="ptag">콘텐츠 기획</span></div></div></div>
+      <div class="pcard"><div class="pthumb t6"><img src="images/thumb6.jpg"></div><div class="pinfo"><div class="pcat">현장 교육</div><div class="ptitle">담임 및 부산진구 연합 토요스쿨 교사</div><div class="pmeta">성모여자고등학교 · 2013.03 ~ 2015.02</div><div class="ptags"><span class="ptag">담임</span><span class="ptag">토요스쿨</span><span class="ptag">3개교 연합</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sh"><div class="sec-tag">Certifications</div><h2 class="sec-title">보유 <em>자격증</em></h2></div>
+    <div class="cert-grid">
+      <div class="cert-card"><div class="cert-badge"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#E8614A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="32" height="22" rx="2"/><line x1="20" y1="28" x2="20" y2="34"/><line x1="13" y1="34" x2="27" y2="34"/></svg></div><div class="cert-name">영어 교원자격증</div><div class="cert-issuer">중앙대학교</div><div class="cert-date">2009.08</div></div>
+      <div class="cert-card"><div class="cert-badge"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#E8614A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="32" height="22" rx="2"/><line x1="20" y1="28" x2="20" y2="34"/><line x1="13" y1="34" x2="27" y2="34"/></svg></div><div class="cert-name">국어 교원자격증</div><div class="cert-issuer">중앙대학교</div><div class="cert-date">2009.08</div></div>
+      <div class="cert-card"><div class="cert-badge"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#E8614A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="13" width="10" height="14" rx="2"/><path d="M16 15l10-7v24l-10-7"/><path d="M28 16c2 1.5 2 6.5 0 8"/><path d="M31 12c4 3 4 13 0 16"/></svg></div><div class="cert-name">스페인어 DELE A1</div><div class="cert-issuer">Instituto Cervantes</div><div class="cert-date">2009.11</div></div>
+      <div class="cert-card"><div class="cert-badge"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#E8614A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="32" height="20" rx="2"/><line x1="4" y1="23" x2="36" y2="23"/><line x1="14" y1="27" x2="12" y2="33"/><line x1="26" y1="27" x2="28" y2="33"/><line x1="10" y1="33" x2="30" y2="33"/></svg></div><div class="cert-name">컴퓨터활용능력 2급</div><div class="cert-issuer">대한상공회의소</div><div class="cert-date">2012.11</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>함께 일해요 🤝</h2>
+  <p>좋은 영어 교육 콘텐츠를 함께 만들어 나갈 팀을 찾고 있습니다.</p>
+  <div class="cbtns">
+    <button class="btn-w" onclick="window.location.href='mailto:3pmcecilia@gmail.com'">📧 이메일 보내기</button>
+<button class="btn-ow" onclick="const a=document.createElement('a');a.href='images/resume.pdf';a.download='이력서.pdf';a.click()">📄 이력서 다운로드</button>  </div>
+</section>
+
+<footer>© 2026 영어 콘텐츠 전문가 포트폴리오</footer>
+
+<script>
+var editing = false;
+var EDITABLE = 'h1,h2,h3,p,.hero-tag,.stat-n,.stat-l,.pcat,.ptitle,.pmeta,.ptag,.cert-name,.cert-issuer,.cert-date,.sec-tag,.hero-desc';
+
+function toggleEdit(btn) {
+  editing = !editing;
+  btn.textContent = editing ? '✅ 편집 완료' : '✏️ 편집 모드';
+  btn.classList.toggle('on', editing);
+  document.querySelectorAll(EDITABLE).forEach(function(el) {
+    el.contentEditable = editing ? 'true' : 'false';
+  });
+}
+
+function doExport() {
+  var clone = document.documentElement.cloneNode(true);
+  clone.querySelectorAll('[contenteditable]').forEach(function(el){ el.removeAttribute('contenteditable'); });
+  clone.querySelectorAll('.admin-float, #saveBar').forEach(function(el){ el.remove(); });
+  var html = '<!DOCTYPE html>\n' + clone.outerHTML;
+  var blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  var old = document.getElementById('saveBar');
+  if (old) old.remove();
+  var bar = document.createElement('div');
+  bar.id = 'saveBar';
+  bar.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#1a1a2e;color:#fff;padding:1rem 2rem;z-index:9999;display:flex;align-items:center;gap:1rem;font-family:sans-serif;font-size:.9rem;';
+  var link = document.createElement('a');
+  link.href = url; link.download = 'portfolio.html';
+  link.textContent = '📄 portfolio.html — 우클릭 → 다른 이름으로 링크 저장';
+  link.style.cssText = 'color:#E8614A;font-weight:700;text-decoration:underline;';
+  var x = document.createElement('button');
+  x.textContent = '✕';
+  x.style.cssText = 'margin-left:auto;background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer;';
+  x.onclick = function(){ bar.remove(); URL.revokeObjectURL(url); };
+  bar.appendChild(link); bar.appendChild(x);
+  document.body.appendChild(bar);
+}
+
+document.getElementById('editBtn2').addEventListener('click', function(){ toggleEdit(this); });
+document.getElementById('downloadBtn2').addEventListener('click', doExport);
+
+document.querySelectorAll('.ftab').forEach(function(t) {
+  t.addEventListener('click', function() {
+    document.querySelectorAll('.ftab').forEach(function(x){ x.classList.remove('on'); });
+    t.classList.add('on');
+  });
+});
+</script>
+</body></html>
