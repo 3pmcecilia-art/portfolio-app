@@ -84,8 +84,10 @@ body{min-width:1280px;font-family:-apple-system,'Apple SD Gothic Neo','Malgun Go
 .ftab.on,.ftab:hover{background:var(--coral);border-color:var(--coral);color:#fff}
 
 .pgrid{display:flex;flex-wrap:wrap;gap:1.25rem}
-.pcard{flex:none;width:197px;background:#fff;border-radius:14px;overflow:hidden;border:0.5px solid var(--border);transition:transform .2s}
+.pcard{flex:none;width:197px;background:#fff;border-radius:14px;overflow:hidden;border:0.5px solid var(--border);transition:transform .2s,opacity .2s,border-color .2s,box-shadow .2s}
 .pcard:hover{transform:translateY(-4px)}
+.pcard.highlight{border-color:var(--coral);box-shadow:0 0 0 2.5px #FDD1CE}
+.pcard.dim{opacity:.35}
 .pthumb{height:165px;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#C4897A;overflow:hidden}
 .pthumb img{width:100%;height:100%;object-fit:cover}
 .t1{background:#FAF0EE}.t2{background:#F5EEF0}.t3{background:#EEF3F0}
@@ -169,18 +171,17 @@ footer{background:#11111f;text-align:center;padding:1.25rem;font-size:.75rem;col
   <div class="sec-inner">
     <div class="sh"><div class="sec-tag">Portfolio</div><h2 class="sec-title">주요 <em>프로젝트</em></h2></div>
     <div class="ftabs">
-      <button class="ftab on">전체</button>
-      <button class="ftab">교과서 개발</button>
+      <button class="ftab on">교과서 개발</button>
       <button class="ftab">디지털 콘텐츠</button>
       <button class="ftab">현장 교육</button>
     </div>
     <div class="pgrid">
       <div class="pcard"><div class="pthumb t1"><img src="images/thumb1.jpg"></div><div class="pinfo"><div class="pcat">교과서 개발</div><div class="ptitle">고등 수프림 듣기 참고서 개편</div><div class="pmeta">동아출판 <br> 2025.04 ~ 2025.08</div><div class="ptags"><span class="ptag">참고서</span><span class="ptag">듣기</span><span class="ptag">고등</span></div></div></div>
-      <div class="pcard"><div class="pthumb t2"><img src="images/thumb2.jpg"></div><div class="pinfo"><div class="pcat">교과서 개발</div><div class="ptitle">공통영어 교과서 개발</div><div class="pmeta">동아출판 <br> 2022.07 ~ 2023.12</div><div class="ptags"><span class="ptag">교과서</span><span class="ptag">고등</span><span class="ptag">편집</span></div></div></div>
-      <div class="pcard"><div class="pthumb t3"><img src="images/thumb3.png"></div><div class="pinfo"><div class="pcat">디지털 콘텐츠</div><div class="ptitle">초등·성인 전화화상영어 웹교재 개발</div><div class="pmeta">YBM교육 <br> 2021.01 ~ 2021.02</div><div class="ptags"><span class="ptag">웹교재</span><span class="ptag">화상영어</span><span class="ptag">초등</span><span class="ptag">성인</span> </span></div></div></div>
-      <div class="pcard"><div class="pthumb t4"><img src="images/thumb4.jpg"></div><div class="pinfo"><div class="pcat">교과서 개발</div><div class="ptitle">고등 심화 영어Ⅰ 교과서 개발</div><div class="pmeta">천재교과서 <br> 2016.03 ~ 2016.12</div><div class="ptags"><span class="ptag">교과서</span><span class="ptag">특목고</span><span class="ptag">고등심화</span></div></div></div>
-      <div class="pcard"><div class="pthumb t5"><img src="images/thumb5.png" style="object-fit:contain;""></div><div class="pinfo"><div class="pcat">디지털 콘텐츠</div><div class="ptitle">밀크T중고등 온라인 콘텐츠 개발</div><div class="pmeta">천재교과서 <br> 2018.01 ~ 2020.08</div><div class="ptags"><span class="ptag">온라인</span><span class="ptag">밀크T</span><span class="ptag">콘텐츠 기획</span></div></div></div>
-      <div class="pcard"><div class="pthumb t6"><img src="images/thumb6.jpg"></div><div class="pinfo"><div class="pcat">현장 교육</div><div class="ptitle">담임 및 부산진구 연합 토요스쿨 교사</div><div class="pmeta">성모여자고등학교 <br> 2013.03 ~ 2015.02</div><div class="ptags"><span class="ptag">담임</span><span class="ptag">티칭</span><span class="ptag">지역 연합</span></div></div></div>
+      <div class="pcard" data-highlight="교과서개발"><div class="pthumb t2"><img src="images/thumb2.jpg"></div><div class="pinfo"><div class="pcat">교과서 개발</div><div class="ptitle">공통영어 교과서 개발</div><div class="pmeta">동아출판 <br> 2022.07 ~ 2023.12</div><div class="ptags"><span class="ptag">교과서</span><span class="ptag">고등</span><span class="ptag">편집</span></div></div></div>
+      <div class="pcard" data-highlight="디지털콘텐츠"><div class="pthumb t3"><img src="images/thumb3.png"></div><div class="pinfo"><div class="pcat">디지털 콘텐츠</div><div class="ptitle">초등·성인 전화화상영어 웹교재 개발</div><div class="pmeta">YBM교육 <br> 2021.01 ~ 2021.02</div><div class="ptags"><span class="ptag">웹교재</span><span class="ptag">화상영어</span><span class="ptag">초등</span><span class="ptag">성인</span> </span></div></div></div>
+      <div class="pcard" data-highlight="교과서개발"><div class="pthumb t4"><img src="images/thumb4.jpg"></div><div class="pinfo"><div class="pcat">교과서 개발</div><div class="ptitle">고등 심화 영어Ⅰ 교과서 개발</div><div class="pmeta">천재교과서 <br> 2016.03 ~ 2016.12</div><div class="ptags"><span class="ptag">교과서</span><span class="ptag">특목고</span><span class="ptag">고등심화</span></div></div></div>
+      <div class="pcard" data-highlight="디지털콘텐츠"><div class="pthumb t5"><img src="images/thumb5.png" style="object-fit:contain;""></div><div class="pinfo"><div class="pcat">디지털 콘텐츠</div><div class="ptitle">밀크T중고등 온라인 콘텐츠 개발</div><div class="pmeta">천재교과서 <br> 2018.01 ~ 2020.08</div><div class="ptags"><span class="ptag">온라인</span><span class="ptag">밀크T</span><span class="ptag">콘텐츠 기획</span></div></div></div>
+      <div class="pcard" data-highlight="현장교육"><div class="pthumb t6"><img src="images/thumb6.jpg"></div><div class="pinfo"><div class="pcat">현장 교육</div><div class="ptitle">담임 및 부산진구 연합 토요스쿨 교사</div><div class="pmeta">성모여자고등학교 <br> 2013.03 ~ 2015.02</div><div class="ptags"><span class="ptag">담임</span><span class="ptag">티칭</span><span class="ptag">지역 연합</span></div></div></div>
     </div>
   </div>
 </section>
@@ -247,12 +248,34 @@ function doExport() {
 document.getElementById('editBtn2').addEventListener('click', function(){ toggleEdit(this); });
 document.getElementById('downloadBtn2').addEventListener('click', doExport);
 
+var tabHighlights = {
+  '교과서 개발': '교과서개발',
+  '디지털 콘텐츠': '디지털콘텐츠',
+  '현장 교육': '현장교육'
+};
+
+function applyHighlight(key) {
+  document.querySelectorAll('.pcard').forEach(function(card) {
+    var h = card.dataset.highlight;
+    if (h === key) {
+      card.classList.add('highlight');
+      card.classList.remove('dim');
+    } else {
+      card.classList.remove('highlight');
+      card.classList.add('dim');
+    }
+  });
+}
+
 document.querySelectorAll('.ftab').forEach(function(t) {
   t.addEventListener('click', function() {
     document.querySelectorAll('.ftab').forEach(function(x){ x.classList.remove('on'); });
     t.classList.add('on');
+    applyHighlight(tabHighlights[t.textContent.trim()]);
   });
 });
+
+applyHighlight('교과서개발');
 </script>
 </body></html>
 
