@@ -171,7 +171,8 @@ footer{background:#11111f;text-align:center;padding:1.25rem;font-size:.75rem;col
   <div class="sec-inner">
     <div class="sh"><div class="sec-tag">Portfolio</div><h2 class="sec-title">주요 <em>프로젝트</em></h2></div>
     <div class="ftabs">
-      <button class="ftab on">교과서 개발</button>
+      <button class="ftab on">전체</button>
+      <button class="ftab">교과서 개발</button>
       <button class="ftab">디지털 콘텐츠</button>
       <button class="ftab">현장 교육</button>
     </div>
@@ -256,8 +257,9 @@ var tabHighlights = {
 
 function applyHighlight(key) {
   document.querySelectorAll('.pcard').forEach(function(card) {
-    var h = card.dataset.highlight;
-    if (h === key) {
+    if (!key) {
+      card.classList.remove('highlight', 'dim');
+    } else if (card.dataset.highlight === key) {
       card.classList.add('highlight');
       card.classList.remove('dim');
     } else {
@@ -271,7 +273,8 @@ document.querySelectorAll('.ftab').forEach(function(t) {
   t.addEventListener('click', function() {
     document.querySelectorAll('.ftab').forEach(function(x){ x.classList.remove('on'); });
     t.classList.add('on');
-    applyHighlight(tabHighlights[t.textContent.trim()]);
+    var label = t.textContent.trim();
+    applyHighlight(label === '전체' ? null : tabHighlights[label]);
   });
 });
 
